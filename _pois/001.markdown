@@ -1,7 +1,0 @@
----
-layout: poi
-wikidatum: Q121378
-title:  Κέρκυρα
----
-
-Sample text
