@@ -9,7 +9,7 @@ function get_wikidatum(id){
     console.log('API endpoint:', url);
     var jqxhr = $.getJSON( url, function(data) {
           //console.log( "Success; entities returned: ", Object.keys(data).length );
-
+console.log({data})
           let description = get_json_value(['entities',id,'descriptions','el','value'], data);
           if (description)
             $('#wikidata_descr').text( get_first_upper(description) );
@@ -49,15 +49,29 @@ function get_thumbnail(photoname, size){
     var jqxhr = $.getJSON( url, function(data) {
         let credit = get_json_value(['latest','user','name'], data);
         // console.log('Photo credit: ', credit);
+        const images = [
+            {
+                url: get_json_value(['thumbnail','url'], data),
+                size: Math.abs( size - get_json_value(['thumbnail','width'], data)),
+            },
+            {
+                url: get_json_value(['original','url'], data),
+                size: Math.abs( size - get_json_value(['original','width'], data)),
+            },
+            {
+                url: get_json_value(['preferred','url'], data),
+                size: Math.abs( size - get_json_value(['preferred','width'], data)),
+            }
+        ].filter(image => !!image.url)
 
-        let thumbname = get_json_value(['thumbnail','url'], data);
-        if ( thumbname ){
-            let thumbparts = thumbname.split('/');
-            thumbparts.pop();
-            thumbname = thumbparts.join('/');
-            thumbname += ('/'+size+'px-'+photoname);
-            console.log(thumbname);
-            $('#wikidata_img').attr('src', thumbname);
+        if ( images.length > 0) {
+            const closestToSizeImage = images.reduce((min, item) => {
+                return item.size < min.size ? item : min;
+            });
+            const url = closestToSizeImage.url
+
+            console.log(url);
+            $('#wikidata_img').attr('src', url);
         }
     })
     .fail(function() {
