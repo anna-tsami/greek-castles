@@ -9,7 +9,7 @@ function get_wikidatum(id){
     console.log('API endpoint:', url);
     var jqxhr = $.getJSON( url, function(data) {
           //console.log( "Success; entities returned: ", Object.keys(data).length );
-console.log({data})
+
           let description = get_json_value(['entities',id,'descriptions','el','value'], data);
           if (description)
             $('#wikidata_descr').text( get_first_upper(description) );
@@ -30,6 +30,23 @@ console.log({data})
               L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: '© OpenStreetMap'}).addTo(map);
               var marker = L.marker([latlong.latitude, latlong.longitude]).addTo(map);
               marker.bindPopup(elwikititle).openPopup();
+          }
+
+          const p571Value = get_json_value(['entities',id,'claims','P571', 0,'mainsnak', 'datavalue', 'value'], data);
+
+          if (p571Value) {
+            $('.wikidata_p571').show();
+
+            const time = p571Value.time
+            const precision = p571Value.precision
+
+            if ( precision > 8 ) {
+                const dateObject = wikidataTimeToDateObject(time, precision)
+                $('#wikidata_created').append(dateObject.year);
+                $('#wikidata_created').attr('datetime', dateObject.iso);
+            } else {
+                $('#wikidata_created').append(p571Value.time)
+            }
           }
 
           let image = get_json_value(['entities',id,'claims','P18', 0,'mainsnak', 'datavalue', 'value'], data);
@@ -80,6 +97,36 @@ function get_thumbnail(photoname, size){
 
 
 }
+
+function wikidataTimeToDateObject(time, precision) {
+  // Remove leading "+" and split into components
+  const [datePart] = time.replace(/^\+/, "").split("T");
+  let [year, month, day] = datePart.split("-").map(Number);
+
+  // Normalize zeros based on precision
+  if (precision == 9) {
+    // Year precision: month/day unknown
+    month = 1;
+    day = 1;
+  } else if (precision === 10) {
+    // Month precision: day unknown
+    day = 1;
+  }
+
+  // Create a valid ISO date string
+  const iso = `${String(year).padStart(4, "0")}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}T00:00:00Z`;
+  const date = new Date(iso);
+
+  return {
+    date,
+    year,
+    month: precision >= 10 ? month : null,
+    day: precision === 11 ? day : null,
+    precision: precision === 9 ? "year" : precision === 10 ? "month" : "day",
+    iso
+  };
+}
+
 
 function get_first_upper(value){
     if (typeof value === 'string' || value instanceof String)

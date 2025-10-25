@@ -54,25 +54,81 @@ input[type="radio"] {
     opacity: 1;
     z-index: 1
 }
+
+.info {
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   justify-content: center;
+}
+
+@media (min-width: 1024px) {
+   .info {
+      flex-direction: row;
+      align-items: start;
+   }
+}
+
+.tabs {
+   flex-basis: 60%;
+}
+
+.grid-dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem 2rem;
+  justify-items: center;
+  flex-basis: 40%;
+  background-color:#8C2300;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+}
+
+.grid-dl dt,
+.grid-dl dd {
+  margin: 0;
+  width: 100%;
+}
+
+.grid-dl dt {
+  font-weight: bold;
+  text-align: center;
+  grid-row: 1;
+}
+
+.grid-dl dd {
+  text-align: center;
+  background-color: white;
+  color: black;
+}
 </style>
 <h1 id="wikidata_title">{{page.title}}</h1>
-<input type="radio" name="view" value="image" id="image-tab" checked/>
-<input type="radio" name="view" value="map" id="map-tab"/>
-<div id="tab-list">
-   <label class="tab" for="image-tab">
-      Φωτογραφία
-   </label>
-   <label class="tab" for="map-tab">
-      Χάρτης
-   </label>
-</div>
-<div id="tab-panels">
-   <div class="tab-panel" id="image-tab-panel">
-      <img id="wikidata_img" style="width:100%;height:auto" />
+<div class="info">
+   <div class="tabs">
+      <input type="radio" name="view" value="image" id="image-tab" checked/>
+      <input type="radio" name="view" value="map" id="map-tab"/>
+      <div id="tab-list">
+         <label class="tab" for="image-tab">
+            Φωτογραφία
+         </label>
+         <label class="tab" for="map-tab">
+            Χάρτης
+         </label>
+      </div>
+      <div id="tab-panels">
+         <div class="tab-panel" id="image-tab-panel">
+            <img id="wikidata_img" style="width:100%;height:auto" />
+         </div>
+         <div class="tab-panel" id="map-tab-panel">
+            <div id="map" style="height: 100%; width:100%; background-color:lightgrey"></div>
+         </div>
+      </div>
    </div>
-   <div class="tab-panel" id="map-tab-panel">
-      <div id="map" style="height: 100%; width:100%; background-color:lightgrey"></div>
-   </div>
+   <dl class="grid-dl">
+      <dt class="wikidata_p571" style="display: none;">Χρονιά κατασκευής</dt>
+      <dd class="wikidata_p571" style="display: none;"><time id="wikidata_created"></time></dd>
+   </dl>
 </div>
 <h3 id="wikidata_descr"></h3>
 <a id="wikidata_href" target="_blank"><img src = "https://upload.wikimedia.org/wikipedia/commons/archive/5/5a/20211013163259%21Wikipedia%27s_W.svg" alt="Wikipedia link" height="20px"/> <span id="wikipedia_title"> </a>
