@@ -75,7 +75,7 @@ input[type="radio"] {
 
 .grid-dl {
   display: grid;
-  grid-template-columns: repeat(2, fit-content);
+  grid-template-columns: repeat(2, max-content);
   gap: 1rem 2rem;
   justify-items: center;
   flex-basis: 40%;
@@ -83,10 +83,14 @@ input[type="radio"] {
   border-radius: 10px;
   color: white;
   padding: 10px;
+  list-style: none;
+  margin: 0;
 }
 
-.grid-dl dt,
-.grid-dl dd {
+.grid-dl dl {
+   margin: 0;
+}
+.grid-dl li {
   margin: 0;
   width: 100%;
 }
@@ -126,12 +130,26 @@ input[type="radio"] {
          </div>
       </div>
    </div>
-   <dl class="grid-dl">
-      <dt class="wikidata_p571" style="display: none;">Χρονιά κατασκευής</dt>
-      <dd class="wikidata_p571" style="display: none;"><time id="wikidata_created"></time></dd>
-      <dt class="wikidata_p31" style="display: none;">Τύπος κάστρου</dt>
-      <dd class="wikidata_p31" id="wikidata-is" style="display: none;"></dd>
-   </dl>
+   <ul class="grid-dl">
+      <li class="wikidata_p571" style="display: none;">
+         <dl>
+            <dt>Χρονιά κατασκευής</dt>
+            <dd><time id="wikidata_created"></time></dd>
+         </dl>
+      </li>
+      <li class="wikidata_p31" style="display: none;">
+         <dl>
+            <dt>Τύπος κάστρου</dt>
+            <dd id="wikidata-is"></dd>
+         </dl>
+      </li>
+      <li>
+         <dl class="wikidata_p276" style="display: none;">
+            <dt>Τοποθεσία</dt>
+            <dd id="wikidata-location"></dd>
+         </dl>
+      </li>
+   </ul>
 </div>
 <h3 id="wikidata_descr"></h3>
 <a id="wikidata_href" target="_blank"><img src = "https://upload.wikimedia.org/wikipedia/commons/archive/5/5a/20211013163259%21Wikipedia%27s_W.svg" alt="Wikipedia link" height="20px"/> <span id="wikipedia_title"> </a>

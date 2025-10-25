@@ -63,6 +63,21 @@ function get_wikidatum(id){
             });
           }
 
+          const p276Value = get_json_value(['entities',id,'claims','P276', 0,'mainsnak', 'datavalue', 'value'], data);
+          if (p276Value) {
+            const p276Id = p276Value.id
+            $.getJSON( get_wikidatum_url(p276Id), function(data) {
+                label = get_json_value(['entities',p276Id,'labels','el','value'], data);
+                if (label) {
+                    $('#wikidata-location').text(label);
+                    $('.wikidata_p276').show();
+                }
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+                console.log( "Error getting wikidata. ", textStatus, error );
+            });
+          }
+
           let image = get_json_value(['entities',id,'claims','P18', 0,'mainsnak', 'datavalue', 'value'], data);
           get_thumbnail(image, 1000);
 
