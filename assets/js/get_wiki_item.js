@@ -3,13 +3,12 @@ console.log("Fetch: ", wikidatum);
 function get_wikidatum(id){
     console.log('Getting from wikidata entity: ', id);
     // WikiMedia API based:
-    let url = `https://www.wikidata.org/w/api.php?action=wbgetentities&ids=${id}&format=json&languages=en|el&origin=*`;
+    let url = get_wikidatum_url(id);
     // WikiData URI based:
     // let url = `https://www.wikidata.org/wiki/Special:EntityData/${id}.json`;
     console.log('API endpoint:', url);
     var jqxhr = $.getJSON( url, function(data) {
           //console.log( "Success; entities returned: ", Object.keys(data).length );
-
           let description = get_json_value(['entities',id,'descriptions','el','value'], data);
           if (description)
             $('#wikidata_descr').text( get_first_upper(description) );
@@ -49,6 +48,21 @@ function get_wikidatum(id){
             }
           }
 
+          const p31Value = get_json_value(['entities',id,'claims','P31', 0,'mainsnak', 'datavalue', 'value'], data);
+          if (p31Value) {
+            const p31Id = p31Value.id
+            $.getJSON( get_wikidatum_url(p31Id), function(data) {
+                label = get_json_value(['entities',p31Id,'labels','el','value'], data);
+                if (label) {
+                    $('#wikidata-is').text(label);
+                    $('.wikidata_p31').show();
+                }
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+                console.log( "Error getting wikidata. ", textStatus, error );
+            });
+          }
+
           let image = get_json_value(['entities',id,'claims','P18', 0,'mainsnak', 'datavalue', 'value'], data);
           get_thumbnail(image, 1000);
 
@@ -56,6 +70,10 @@ function get_wikidatum(id){
         .fail(function( jqxhr, textStatus, error ) {
             console.log( "Error getting wikidata. ", textStatus, error );
         });
+}
+
+function get_wikidatum_url(id) {
+    return `https://www.wikidata.org/w/api.php?action=wbgetentities&ids=${id}&format=json&languages=en|el&origin=*`;
 }
 
 function get_thumbnail(photoname, size){

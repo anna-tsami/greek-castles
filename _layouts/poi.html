@@ -75,7 +75,7 @@ input[type="radio"] {
 
 .grid-dl {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(2, fit-content);
   gap: 1rem 2rem;
   justify-items: center;
   flex-basis: 40%;
@@ -101,6 +101,7 @@ input[type="radio"] {
   text-align: center;
   background-color: white;
   color: black;
+  border-radius: 5px;
 }
 </style>
 <h1 id="wikidata_title">{{page.title}}</h1>
@@ -128,6 +129,8 @@ input[type="radio"] {
    <dl class="grid-dl">
       <dt class="wikidata_p571" style="display: none;">Χρονιά κατασκευής</dt>
       <dd class="wikidata_p571" style="display: none;"><time id="wikidata_created"></time></dd>
+      <dt class="wikidata_p31" style="display: none;">Τύπος κάστρου</dt>
+      <dd class="wikidata_p31" id="wikidata-is" style="display: none;"></dd>
    </dl>
 </div>
 <h3 id="wikidata_descr"></h3>
