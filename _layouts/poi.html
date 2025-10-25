@@ -2,16 +2,82 @@
 layout: default
 load_leaflet: 1
 ---
+<style>
+input[type="radio"] {
+    display: none;
+}
 
+#tab-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.tab {
+   padding: 5px 10px;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+   background-color: rgba(140, 35, 0, .5);
+   color: white;
+}
+
+#tab-panels {
+    aspect-ratio: 1.3;
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color:#8C2300;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+}
+
+.tab-panel {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    z-index: -1;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .3s ease-in, z-index 0s ease-in .3s;
+}
+
+#image-tab:checked ~ #tab-list label[for="image-tab"],
+#map-tab:checked ~ #tab-list label[for="map-tab"] {
+   background-color: rgba(140, 35, 0, 1);
+}
+
+#image-tab:checked ~ #tab-panels #image-tab-panel,
+#map-tab:checked ~ #tab-panels #map-tab-panel {
+    opacity: 1;
+    z-index: 1
+}
+</style>
 <h1 style="float:right; font-size:64pt; color:#f1f1f1">{{page.title}}</h1>
 <h2 id="wikidata_title"></h2>
+<input type="radio" name="view" value="image" id="image-tab" checked/>
+<input type="radio" name="view" value="map" id="map-tab"/>
+<div id="tab-list">
+   <label class="tab" for="image-tab">
+      Φωτογραφία
+   </label>
+   <label class="tab" for="map-tab">
+      Χάρτης
+   </label>
+</div>
+<div id="tab-panels">
+   <div class="tab-panel" id="image-tab-panel">
+      <img id="wikidata_img" style="width:100%;height:auto" />
+   </div>
+   <div class="tab-panel" id="map-tab-panel">
+      <div id="map" style="height: 100%; width:100%; background-color:lightgrey"></div>
+   </div>
+</div>
 <h3 id="wikidata_descr"></h3>
 <a id="wikidata_href" target="_blank"><img src = "https://upload.wikimedia.org/wikipedia/commons/archive/5/5a/20211013163259%21Wikipedia%27s_W.svg" alt="Wikipedia link" height="20px"/> <span id="wikipedia_title"> </a>
 <p id="wikidata_location"></p>
-
-<img id="wikidata_img" style="width:100%; padding-bottom:5px;" />
-
-<div id="map" style="height: 180px; width:100%; background-color:lightgrey"></div>
 
 {{ content }}
 
