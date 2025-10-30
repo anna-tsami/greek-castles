@@ -78,6 +78,21 @@ function get_wikidatum(id){
             });
           }
 
+          const p1435Value = get_json_value(['entities',id,'claims','P1435', 0,'mainsnak', 'datavalue', 'value'], data);
+          if (p1435Value) {
+            const p1435Id = p1435Value.id
+            $.getJSON( get_wikidatum_url(p1435Id), function(data) {
+                label = get_json_value(['entities',p1435Id,'labels','el','value'], data);
+                if (label) {
+                    $('#wikidata-protection').text(label);
+                    $('.wikidata_p1435').show();
+                }
+            })
+            .fail(function( jqxhr, textStatus, error ) {
+                console.log( "Error getting wikidata. ", textStatus, error );
+            });
+          }
+
           let image = get_json_value(['entities',id,'claims','P18', 0,'mainsnak', 'datavalue', 'value'], data);
           get_thumbnail(image, 1000);
 

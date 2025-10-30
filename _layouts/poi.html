@@ -75,7 +75,7 @@ input[type="radio"] {
 
 .grid-dl {
   display: grid;
-  grid-template-columns: repeat(2, max-content);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem 2rem;
   justify-items: center;
   flex-basis: 40%;
@@ -93,6 +93,7 @@ input[type="radio"] {
 .grid-dl li {
   margin: 0;
   width: 100%;
+  justify-self: stretch
 }
 
 .grid-dl dt {
@@ -143,10 +144,16 @@ input[type="radio"] {
             <dd id="wikidata-is"></dd>
          </dl>
       </li>
-      <li>
-         <dl class="wikidata_p276" style="display: none;">
+      <li class="wikidata_p276" style="display: none;">
+         <dl>
             <dt>Τοποθεσία</dt>
             <dd id="wikidata-location"></dd>
+         </dl>
+      </li>
+      <li class="wikidata_p1435" style="display: none;">
+         <dl>
+            <dt>Καθεστώς προστασίας</dt>
+            <dd id="wikidata-protection"></dd>
          </dl>
       </li>
    </ul>
