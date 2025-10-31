@@ -44,7 +44,12 @@ function get_wikidatum(id){
                 $('#wikidata_created').append(dateObject.year);
                 $('#wikidata_created').attr('datetime', dateObject.iso);
             } else {
-                $('#wikidata_created').append(p571Value.time)
+                let timeValue = p571Value.time
+
+                if ( precision === 7) {
+                    timeValue = getCenturyPeriod(timeValue)
+                }
+                $('#wikidata_created').text(timeValue)
             }
           }
 
@@ -173,6 +178,32 @@ function wikidataTimeToDateObject(time, precision) {
     precision: precision === 9 ? "year" : precision === 10 ? "month" : "day",
     iso
   };
+}
+
+function getCenturyPeriod(dateStr) {
+  const year = parseInt(dateStr.slice(1, 5), 10);
+
+  if (isNaN(year)) {
+    throw new Error("Invalid date string format. Expected '+YYYY-...'");
+  }
+
+  // Determine the century
+  const century = Math.floor((year - 1) / 100) + 1;
+
+  // Determine where in the century the year falls
+  let yearInCentury = year % 100;
+  if (yearInCentury === 0) yearInCentury = 100;
+
+  let period;
+  if (yearInCentury <= 33) {
+    period = "αρχές";
+  } else if (yearInCentury <= 66) {
+    period = "μέσα";
+  } else {
+    period = "τέλη";
+  }
+
+  return `${period} ${century}ου αιώνα`;
 }
 
 
