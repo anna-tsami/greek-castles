@@ -5,6 +5,9 @@ load_leaflet: 1
 <div id="map" style="height: auto; width:100%; background-color:lightgrey;aspect-ratio: 1.5;"></div>
 {{content}}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+  const castleIconUrl = '{{ "/assets/images/castle.png" | relative_url }}';
+</script>
 <script src="{{ '/assets/js/pois.js' | relative_url }}"></script>
 
 <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"

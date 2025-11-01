@@ -127,7 +127,12 @@ Promise.allSettled(pois.map(poi =>{
 .then(results => {
     const totalPois = pois.length
     const resolvedPois = results.map( result => result.value);
-
+    const castleIcon = L.icon({
+        iconUrl: castleIconUrl,
+        iconSize:     [38, 25], // size of the icon
+        iconAnchor:   [16, 32], // point of the icon which corresponds to marker’s location
+        popupAnchor:  [0, -30]  // where the popup should open relative to the iconAnchor
+    });
     let center = resolvedPois.reduce((previous, current) => {
       return {
         lat: previous.lat + current.latlong.lat, lon: previous.lon + current.latlong.lon
@@ -138,9 +143,9 @@ Promise.allSettled(pois.map(poi =>{
 
     var map = L.map('map', {fullscreenControl: { pseudoFullscreen: true } }).setView([center.lat, center.lon], 6);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: '© OpenStreetMap'}).addTo(map);
-    console.log(resolvedPois)
+
     resolvedPois.forEach(({latlong, title, image, url}) => {
-      var marker = L.marker([latlong.lat, latlong.lon]).addTo(map);
+      var marker = L.marker([latlong.lat, latlong.lon], { icon: castleIcon}).addTo(map);
       const popupHtml = `
         <div style="text-align:center;aspect-ratio:1.35;width:150px; padding:5px">
           <img src="${image}" alt="${title}" width="100%" height="auto" style="border-radius:8px;margin-bottom:10px">
