@@ -48,6 +48,9 @@ function get_wikidatum(id){
 
                 if ( precision === 7) {
                     timeValue = getCenturyPeriod(timeValue)
+                } else if (precision === 8 ) {
+                    const dateObject = wikidataTimeToDateObject(time, 9)
+                    timeValue = `δεκαετία ${dateObject.year}`
                 }
                 $('#wikidata_created').text(timeValue)
             }
