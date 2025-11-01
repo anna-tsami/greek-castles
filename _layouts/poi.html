@@ -22,6 +22,10 @@ input[type="radio"] {
    color: white;
 }
 
+.tab:hover {
+   background-color: rgba(140, 35, 0, .75);
+}
+
 #tab-panels {
     aspect-ratio: 1.3;
     position: relative;
@@ -108,6 +112,32 @@ input[type="radio"] {
   color: black;
   border-radius: 5px;
 }
+
+#castle-navigation {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.castle-navigation-link {
+   display: inline-block;
+   text-decoration: none;
+   border-radius: 5px;
+   padding: 5px 10px;
+   color: white;
+   background-color: rgba(140, 35, 0, .75);
+   margin: 10px 0;
+}
+
+.castle-navigation-link:hover {
+   text-decoration: none;
+   background-color: rgba(140, 35, 0, 1);
+   color: white;
+}
+
+#next-castle {
+   text-align: right;
+}
 </style>
 <h1 id="wikidata_title">{{page.title}}</h1>
 <div class="info">
@@ -164,8 +194,15 @@ input[type="radio"] {
 
 {{ content }}
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Wikidata_Stamp_Rec_Light.svg" style="float:right; width:100px" />
-
+{% if page.previous_castle and page.next_castle %}
+<nav id="castle-navigation" aria-label="Castle">
+   <a class="castle-navigation-link" id="previous-castle" href="{{ page.previous_castle.uri | relative_url }}">{{page.previous_castle.title}}</a>
+   <a class="castle-navigation-link" id="next-castle" href="{{ page.next_castle.uri | relative_url }}">{{page.next_castle.title}}</a>
+</nav>
+{% endif %}
+<div style="display:flex;justify-content: end;">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Wikidata_Stamp_Rec_Light.svg" style="width:100px" />
+</div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>var wikidatum = '{{page.wikidatum}}'</script>
 <script src="{{ '/assets/js/get_wiki_item.js' | relative_url }}"></script>
