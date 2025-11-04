@@ -4,4 +4,5 @@
 
 layout: home
 top_imge: https://upload.wikimedia.org/wikipedia/commons/9/94/Wide_brown_land_art-work.JPG
+excerpt: Ανακάλυψε τα πιο εντυπωσιακά κάστρα της Ελλάδας! Φωτογραφίες, ιστορία, μύθοι και ταξιδιωτικές προτάσεις για κάθε φρούριο — από τη Κέρκυρα ως τη Ρόδο.
 ---

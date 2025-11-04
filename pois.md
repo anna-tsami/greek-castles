@@ -1,8 +1,8 @@
 ---
 layout: pois
-title: POIs List
 permalink: /pois/
-
+title: Χάρτης Κάστρων
+description: Εξερεύνησε τα κάστρα και τα μεσαιωνικά φρούρια της Ελλάδας πάνω σε διαδραστικό χάρτη
 ---
 <script>
   var pois = []

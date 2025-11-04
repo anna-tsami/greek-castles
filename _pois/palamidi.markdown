@@ -2,6 +2,7 @@
 layout: poi
 wikidatum: Q606341
 title: Παλαμήδι
+description: Ανακάλυψε το ενετικό φρούριο χτισμένο στο λόφο του Παλαμηδίου πάνω από το Ναύπλιο της Ελλάδας.
 previous_castle:
     uri: pois/neo-frourio-kerkyras
     title: Νέο φρούριο Κέρκυρας

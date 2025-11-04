@@ -2,6 +2,7 @@
 layout: poi
 wikidatum: Q56397443
 title:  Κάστρο Πάργας
+description: Το Κάστρο της Πάργας είναι μεσαιωνικό κάστρο στην κορυφή της Πάργας στην Ήπειρο
 previous_castle:
     uri: pois/kastro-pargas
     title: Κάστρο Πάργας

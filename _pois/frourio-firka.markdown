@@ -2,6 +2,7 @@
 layout: poi
 wikidatum: Q38279797
 title: Φρούριο Φίρκα
+description: Το Φρούριο Φίρκα είναι ενετικό φρούριο που βρίσκεται στη βορειοδυτική πλευρά του παλιού λιμανιού των Χανίων, στην Κρήτη
 previous_castle:
     uri: pois/palati-tou-megalou-magistrou
     title: Παλάτι του Μεγάλου Μαγίστρου

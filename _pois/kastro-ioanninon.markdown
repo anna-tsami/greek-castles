@@ -2,6 +2,7 @@
 layout: poi
 wikidatum: Q17496804
 title:  Κάστρο Ιωαννίνων
+description: Το Κάστρο των Ιωαννίνων είναι η οχυρωμένη παλιά πόλη των Ιωαννίνων στη βορειοδυτική Ελλάδα
 previous_castle:
     uri: pois/frourio-kavalas
     title: Φρούριο Καβάλας
