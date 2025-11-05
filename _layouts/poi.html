@@ -189,10 +189,13 @@ input[type="radio"] {
    </ul>
 </div>
 <h3 id="wikidata_descr"></h3>
-<a id="wikidata_href" target="_blank"><img src = "https://upload.wikimedia.org/wikipedia/commons/archive/5/5a/20211013163259%21Wikipedia%27s_W.svg" alt="Wikipedia link" height="20px"/> <span id="wikipedia_title"> </a>
-<p id="wikidata_location"></p>
 
 {{ content }}
+
+<p>
+   Διαβάστε περισσότερα στη <a id="wikidata_href" target="_blank"><img src = "https://upload.wikimedia.org/wikipedia/commons/archive/5/5a/20211013163259%21Wikipedia%27s_W.svg" alt="Wikipedia link" height="20px"/> Wikipedia </a>
+</p>
+{% include share-buttons.html %}
 
 {% if page.previous_castle and page.next_castle %}
 <nav id="castle-navigation" aria-label="Castle">
