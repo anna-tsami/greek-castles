@@ -148,8 +148,8 @@ Promise.allSettled(pois.map(poi =>{
       var marker = L.marker([latlong.lat, latlong.lon], { icon: castleIcon}).addTo(map);
       const popupHtml = `
         <div style="text-align:center;aspect-ratio:1.35;width:150px; padding:5px">
-          <img src="${image}" alt="${title}" width="100%" height="auto" style="border-radius:8px;margin-bottom:10px">
-          <h4><a href="${url}" target="_blank">${title}</a></h4>
+          <a href="${url}"><img src="${image}" alt="${title}" width="100%" height="auto" style="border-radius:8px;margin-bottom:10px"></a>
+          <h4><a href="${url}">${title}</a></h4>
         </div>
       `;
       marker.bindPopup(popupHtml);
