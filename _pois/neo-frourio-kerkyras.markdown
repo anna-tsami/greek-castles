@@ -3,6 +3,7 @@ layout: poi
 wikidatum: Q603447
 title:  Νέο φρούριο Κέρκυρας
 description: Το Νέο Φρούριο της Κέρκυρας αποτελείται από μια Βενετική κατασκευή στον λόφο του Αγίου Μάρκου στην πόλη της Κέρκυρας
+image: https://commons.wikimedia.org/wiki/File:Corfou-ville-nouvelle_citadelle.jpg
 keywords:
   - φρούριο
   - Κέρκυρα

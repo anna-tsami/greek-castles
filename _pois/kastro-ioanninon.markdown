@@ -3,6 +3,7 @@ layout: poi
 wikidatum: Q17496804
 title:  Κάστρο Ιωαννίνων
 description: Το Κάστρο των Ιωαννίνων είναι η οχυρωμένη παλιά πόλη των Ιωαννίνων στη βορειοδυτική Ελλάδα
+image: https://commons.wikimedia.org/wiki/File:%CE%9A%CE%AC%CF%83%CF%84%CF%81%CE%BF_%CE%99%CF%89%CE%B1%CE%BD%CE%BD%CE%AF%CE%BD%CF%89%CE%BD_(photosiotas)_(4).jpg
 keywords:
   - κάστρο
   - Ιωάννινα

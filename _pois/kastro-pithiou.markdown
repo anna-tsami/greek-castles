@@ -2,7 +2,7 @@
 layout: poi
 wikidatum: Q38280079
 title:  Κάστρο Πυθίου
-keywords:
+image: https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Pythio%2C_Evros-GR-A71-0004.jpg/960px-Pythio%2C_Evros-GR-A71-0004.jpg
   - κάστρο
   - Πυθίο
   - Κάστρο Πυθίου

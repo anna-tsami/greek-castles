@@ -3,6 +3,7 @@ layout: poi
 wikidatum: Q58785160
 title: Φρούριο Καβάλας
 description: Ανακάλυψε το Φρούριο Καβάλας που είναι κτισμένο στην κορυφή της Χερσονήσου της Παναγίας, στην τοποθεσία "Ακρόπολις"
+image: https://commons.wikimedia.org/wiki/File:Kavala_(27).JPG
 keywords:
   - φρούριο
   - Καβάλα

@@ -3,6 +3,7 @@ layout: poi
 wikidatum: Q38279797
 title: Φρούριο Φίρκα
 description: Το Φρούριο Φίρκα είναι ενετικό φρούριο που βρίσκεται στη βορειοδυτική πλευρά του παλιού λιμανιού των Χανίων, στην Κρήτη
+image: https://el.wikipedia.org/wiki/%CE%A6%CF%81%CE%BF%CF%8D%CF%81%CE%B9%CE%BF_%CE%A6%CE%B9%CF%81%CE%BA%CE%AC#/media/%CE%91%CF%81%CF%87%CE%B5%CE%AF%CE%BF:%CE%A6%CF%81%CE%BF%CF%85%CF%81%CE%B9%CE%BF_%CE%A6%CE%B9%CF%81%CE%BA%CE%B1_1.jpg
 keywords:
   - φρούριο
   - Κρήτη

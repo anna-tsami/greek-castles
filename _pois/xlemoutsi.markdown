@@ -3,6 +3,7 @@ layout: poi
 wikidatum: Q913308
 title: Χλεμούτσι
 description: Ανακάλυψε τo σημαντικότερο κάστρο του Πριγκιπάτου της Αχαΐας
+image: https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Chlemoutsi_BoreiaEis.jpg/960px-Chlemoutsi_BoreiaEis.jpg
 keywords:
   - κάστρο
   - Χλεμούτσι

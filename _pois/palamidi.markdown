@@ -3,6 +3,7 @@ layout: poi
 wikidatum: Q606341
 title: Παλαμήδι
 description: Ανακάλυψε το ενετικό φρούριο χτισμένο στο λόφο του Παλαμηδίου πάνω από το Ναύπλιο της Ελλάδας.
+image: https://upload.wikimedia.org/wikipedia/commons/1/17/Palamidi_fortress_%28Nafplio%2C_Greece%29.jpg
 keywords:
   - φρούριο
   - Παλαμήδι
