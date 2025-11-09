@@ -3,6 +3,10 @@ layout: poi
 wikidatum: Q913308
 title: Χλεμούτσι
 description: Ανακάλυψε τo σημαντικότερο κάστρο του Πριγκιπάτου της Αχαΐας
+keywords:
+  - κάστρο
+  - Χλεμούτσι
+  - Αχαΐα
 previous_castle:
     uri: pois/palati-tou-megalou-magistrou
     title: Παλάτι του Μεγάλου Μαγίστρου

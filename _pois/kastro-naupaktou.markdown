@@ -3,6 +3,11 @@ layout: poi
 wikidatum: Q38283760
 title:  Κάστρο Ναυπάκτου
 description: Το Κάστρο Ναυπάκτου είναι οχύρωση στην Ναύπακτο, στον νομό Αιτωλοακαρνανίας
+keywords:
+  - κάστρο
+  - Ναυπάκτος
+  - Κάστρο Ναυπάκτου
+  - βυζαντινή αρχιτεκτονική
 previous_castle:
     uri: pois/kastro-monemvasias
     title: Κάστρο Μονεμβασιάς
