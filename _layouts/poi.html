@@ -154,9 +154,10 @@ input[type="radio"] {
       </div>
       <div id="tab-panels">
          <div class="tab-panel" id="image-tab-panel">
-            <picture style="width:100%;height:auto">
+            <picture style="width:100%;height:auto;max-height: 100%;overflow: hidden;">
                <source id="wikidata_img_desktop" media="(width >= 1024px)" />
-               <img id="wikidata_img"  alt="Εικόνα του αντικειμένου"/>
+               <source id="wikidata_img"  />
+               <img src="{{ '/assets/images/placeholder.jpg' | relative_url }}" style="max-height: 100%;" alt="Εικόνα του αντικειμένου"/>
             </picture>
          </div>
          <div class="tab-panel" id="map-tab-panel">

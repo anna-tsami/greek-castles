@@ -144,7 +144,7 @@ function get_thumbnail(photoname){
                 return item.size < min.size ? item : min;
             });
             const src = closestToSizeImageMobile.url;
-            $('#wikidata_img').attr('src', src);
+            $('#wikidata_img').attr('srcset', src);
 
             const closestToSizeImageDesktop = images.reduce((min, item) => {
                 return item.size < min.size ? item : min;
