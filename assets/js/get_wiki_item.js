@@ -17,13 +17,11 @@ function get_wikidatum(id){
           if (elwikititle) {
             $('#wikidata_title').text( get_first_upper(elwikititle) );
             $('#wikidata_href').attr('href', 'https://el.wikipedia.org/wiki/'+elwikititle );
-            $('#wikipedia_title').text('https://el.wikipedia.org/wiki/'+elwikititle );
           }
 
 
           let latlong = get_json_value(['entities',id,'claims','P625', 0,'mainsnak', 'datavalue', 'value'], data);
           if (latlong) {
-              //$('#wikidata_location').text(JSON.stringify(value) );
               console.log('Create map');
               var map = L.map('map', {fullscreenControl: { pseudoFullscreen: true } }).setView([latlong.latitude, latlong.longitude], 13);
               L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: '© OpenStreetMap'}).addTo(map);
@@ -102,7 +100,7 @@ function get_wikidatum(id){
           }
 
           let image = get_json_value(['entities',id,'claims','P18', 0,'mainsnak', 'datavalue', 'value'], data);
-          get_thumbnail(image, 1000);
+          get_thumbnail(image);
 
         })
         .fail(function( jqxhr, textStatus, error ) {
@@ -114,37 +112,45 @@ function get_wikidatum_url(id) {
     return `https://www.wikidata.org/w/api.php?action=wbgetentities&ids=${id}&format=json&languages=en|el&origin=*`;
 }
 
-function get_thumbnail(photoname, size){
+function get_thumbnail(photoname){
     photoname = photoname.replaceAll(' ', '_');
-    console.log('Getting '+size+'px thumb of: ', photoname);
     // WikiMedia API based:
     let url = `https://api.wikimedia.org/core/v1/commons/file/File:${photoname}`;
     var jqxhr = $.getJSON( url, function(data) {
         let credit = get_json_value(['latest','user','name'], data);
         // console.log('Photo credit: ', credit);
+        const maxMobileSize = 720
+        const maxDesktopSize = 400
         const images = [
             {
                 url: get_json_value(['thumbnail','url'], data),
-                size: Math.abs( size - get_json_value(['thumbnail','width'], data)),
+                size: Math.abs( maxMobileSize - get_json_value(['thumbnail','width'], data)),
+                desktopSize: Math.abs( maxDesktopSize - get_json_value(['thumbnail','width'], data)),
             },
             {
                 url: get_json_value(['original','url'], data),
-                size: Math.abs( size - get_json_value(['original','width'], data)),
+                size: Math.abs( maxMobileSize - get_json_value(['original','width'], data)),
+                desktopSize: Math.abs( maxDesktopSize - get_json_value(['original','width'], data)),
             },
             {
                 url: get_json_value(['preferred','url'], data),
-                size: Math.abs( size - get_json_value(['preferred','width'], data)),
+                size: Math.abs( maxMobileSize - get_json_value(['preferred','width'], data)),
+                desktopSize: Math.abs( maxDesktopSize - get_json_value(['preferred','width'], data)),
             }
         ].filter(image => !!image.url)
 
         if ( images.length > 0) {
-            const closestToSizeImage = images.reduce((min, item) => {
+            const closestToSizeImageMobile = images.reduce((min, item) => {
                 return item.size < min.size ? item : min;
             });
-            const url = closestToSizeImage.url
+            const src = closestToSizeImageMobile.url;
+            $('#wikidata_img').attr('src', src);
 
-            console.log(url);
-            $('#wikidata_img').attr('src', url);
+            const closestToSizeImageDesktop = images.reduce((min, item) => {
+                return item.size < min.size ? item : min;
+            });
+            const srcset = closestToSizeImageDesktop.url;
+            $('#wikidata_img_desktop').attr('srcset', srcset);
         }
     })
     .fail(function() {
